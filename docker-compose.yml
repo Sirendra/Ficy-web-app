@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: ./ficy-backend
+      dockerfile: Dockerfile
+    container_name: backend
+    environment:
+      PORT: ${BACKEND_PORT:-3000}
+      MONGODB_URI: ${MONGODB_URI:-mongodb://mongodb:27017/ficy}
+      JWT_SECRET: ${JWT_SECRET:-your-secret-key}
+    ports:
+      - "${BACKEND_PORT:-3000}:3000"
+    depends_on:
+      - mongo
+
+  frontend:
+    build:
+      context: ./ficy-frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "${FRONTEND_PORT:-80}:80"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

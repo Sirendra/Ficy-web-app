@@ -1,0 +1,23 @@
+<div
+  class="group bg-gray-900 rounded-2xl text-white shadow-lg p-6 border border-gray-800 flex items-center gap-5 h-full cursor-pointer transition-all duration-300 ease-in-out hover:bg-white hover:border-white hover:text-black"
+>
+  <div
+    class="border border-gray-500 rounded-full h-12 w-12 bg-white flex items-center justify-center transition-colors duration-300 group-hover:border-black shrink-0"
+  >
+    <span
+      class="text-black font-semibold tracking-wide text-lg select-none group-hover:text-black"
+    >
+      {{ index + 1 }}
+    </span>
+  </div>
+
+  <div class="flex-1 overflow-hidden">
+    <h3 class="uppercase text-sm font-semibold tracking-wider opacity-80">
+      {{ property === "numberOfPages" ? "Number of pages" : property }}
+    </h3>
+
+    <div class="text-sm opacity-90 mt-1 line-clamp-3">
+      {{ property === "released" ? (value | date : "mediumDate") : value }}
+    </div>
+  </div>
+</div>

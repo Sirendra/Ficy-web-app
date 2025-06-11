@@ -1,0 +1,45 @@
+<div
+  class="bg-gray-900 rounded-3xl text-white shadow-purple-600/40 p-8 border border-gray-800 flex flex-col gap-5 cursor-pointer transition-all duration-500 ease-in-out hover:bg-white hover:border-purple-500 hover:text-black shadow-lg"
+>
+  <div
+    class="border border-purple-500 rounded-full h-14 w-14 bg-gradient-to-tr from-purple-600 to-purple-400 flex items-center justify-center shadow-md"
+  >
+    <span class="text-black font-semibold tracking-widest text-lg select-none">
+      {{ index + 1 }}
+    </span>
+  </div>
+
+  <h3
+    class="uppercase text-2xl font-extrabold leading-9 text-purple-400 transition-colors duration-500 ease-in-out hover:text-purple-900 truncate"
+    title="{{ book.name }}"
+  >
+    {{ book.name }}
+  </h3>
+
+  <p
+    class="text-sm text-purple-300 transition-colors duration-500 ease-in-out hover:text-purple-700"
+  >
+    Author:
+    <span class="font-semibold text-purple-400">{{ book.authors[0] }}</span>
+  </p>
+  <p
+    class="text-sm text-purple-300 transition-colors duration-500 ease-in-out hover:text-purple-700"
+  >
+    Pages:
+    <span class="font-semibold text-purple-400">{{ book.numberOfPages }}</span>
+  </p>
+  <p
+    class="text-sm text-purple-300 transition-colors duration-500 ease-in-out hover:text-purple-700"
+  >
+    Published:
+    <span class="font-semibold text-purple-400">{{
+      book.released | date : "MMMM yyyy"
+    }}</span>
+  </p>
+  <p
+    class="text-sm text-purple-300 transition-colors duration-500 ease-in-out hover:text-purple-700"
+  >
+    Country:
+    <span class="font-semibold text-purple-400">{{ book.country }}</span>
+  </p>
+</div>

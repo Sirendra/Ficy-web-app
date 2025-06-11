@@ -1,0 +1,189 @@
+<nav
+  [class.bg-primary-bg]="isScrolled"
+  [class.sticky]="isScrolled"
+  class="fixed top-0 left-0 w-full z-50 transition-colors duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <a routerLink="/" class="text-white flex font-bold text-xl items-center">
+        F
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          class="h-6 text-orange-400"
+        >
+          <path
+            d="M12 2s2 3-1 6c3-1 4 2 3 4-1 2-3 2-4 2l1 3h2l-1 5h-2l-1-5h2l-1-3c-3 0-5-2-4-5 1-3 5-5 5-7z"
+          />
+        </svg>
+        c
+        <svg
+          width="24"
+          height="28"
+          viewBox="0 0 60 80"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+        >
+          <defs>
+            <linearGradient id="iceGradient" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#a5f3fc" />
+              <stop offset="100%" stop-color="#06b6d4" />
+            </linearGradient>
+            <filter id="iceGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow
+                dx="0"
+                dy="0"
+                stdDeviation="2"
+                flood-color="#bae6fd"
+              />
+            </filter>
+          </defs>
+          <path
+            d="M10 10 L30 35 L50 10 L40 10 L30 25 L20 10 Z M30 35 L30 70"
+            stroke="url(#iceGradient)"
+            stroke-width="6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            filter="url(#iceGlow)"
+          />
+        </svg>
+      </a>
+
+      <ul
+        class="hidden md:flex space-x-6 text-white uppercase tracking-wide text-sm"
+      >
+        <li>
+          <a
+            routerLink="/home"
+            routerLinkActive="underline"
+            class="hover:underline cursor-pointer"
+            [ngClass]="{
+              'hover:text-gray-700': isScrolled,
+              'text-white hover:text-purple-400': !isScrolled
+            }"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/books"
+            routerLinkActive="underline"
+            class="hover:underline hover:text-purple-400 cursor-pointer"
+            [ngClass]="{
+              'hover:text-gray-700': isScrolled,
+              'text-white hover:text-purple-400': !isScrolled
+            }"
+            >Books</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/characters"
+            routerLinkActive="underline"
+            class="hover:underline hover:text-purple-400 cursor-pointer"
+            [ngClass]="{
+              'hover:text-gray-700': isScrolled,
+              'text-white hover:text-purple-400': !isScrolled
+            }"
+            >Characters</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/houses"
+            routerLinkActive="underline"
+            class="hover:underline hover:text-purple-400 cursor-pointer"
+            [ngClass]="{
+              'hover:text-gray-700': isScrolled,
+              'text-white hover:text-purple-400': !isScrolled
+            }"
+            >Houses</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/favorites"
+            routerLinkActive="underline"
+            class="hover:underline hover:text-purple-400 cursor-pointer"
+            [ngClass]="{
+              'hover:text-gray-700': isScrolled,
+              'text-white hover:text-purple-400': !isScrolled
+            }"
+            >Favorites</a
+          >
+        </li>
+        <li>
+          <div
+            class="hover:underline hover:text-purple-400 cursor-pointer"
+            (click)="logOut()"
+            [ngClass]="{
+              'hover:text-gray-700': isScrolled,
+              'text-white hover:text-purple-400': !isScrolled
+            }"
+          >
+            sign out
+          </div>
+        </li>
+      </ul>
+
+      <button
+        (click)="toggleMobileMenu()"
+        class="block md:hidden text-white focus:outline-none"
+        aria-label="Toggle menu"
+      >
+        <svg
+          *ngIf="!mobileMenuOpen"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          viewBox="0 0 24 24"
+        >
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+
+        <svg
+          *ngIf="mobileMenuOpen"
+          class="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          viewBox="0 0 24 24"
+        >
+          <path d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div
+    *ngIf="mobileMenuOpen"
+    class="md:hidden bg-gray-900 text-white uppercase tracking-wide text-sm"
+  >
+    <ul class="flex flex-col space-y-4 px-6 py-4">
+      <li>
+        <a routerLink="/home" (click)="toggleMobileMenu()">Home</a>
+      </li>
+      <li>
+        <a routerLink="/books" (click)="toggleMobileMenu()">Books</a>
+      </li>
+      <li>
+        <a routerLink="/characters" (click)="toggleMobileMenu()">Characters</a>
+      </li>
+      <li>
+        <a routerLink="/houses" (click)="toggleMobileMenu()">Houses</a>
+      </li>
+      <li>
+        <a routerLink="/favorites" (click)="toggleMobileMenu()">Favorites</a>
+      </li>
+      <li>
+        <div (click)="logOut()">Sign out</div>
+      </li>
+    </ul>
+  </div>
+</nav>

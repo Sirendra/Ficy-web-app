@@ -1,0 +1,57 @@
+<div
+  class="relative w-full aspect-[2/3] rounded-3xl overflow-hidden shadow-2xl shadow-purple-600/40 group border border-purple-400 transition-transform duration-300 hover:scale-[1.03] cursor-pointer"
+  (click)="navigateToDetailPage()"
+>
+  <img
+    [src]="backgroundUrl"
+    alt="background"
+    class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    loading="lazy"
+  />
+
+  <div
+    (click)="toggleFavorite($event)"
+    aria-label="Toggle Favorite"
+    class="absolute top-3 right-3 z-30 border border-purple-300 rounded-full h-12 w-12 bg-gradient-to-tr from-white/90 to-white/70 shadow-md flex items-center justify-center cursor-pointer hover:bg-purple-100 transition-colors duration-300"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      class="w-7 h-7 transition-colors duration-300"
+      [ngClass]="{
+        'fill-purple-500 stroke-purple-600': (isFavorite$ | async),
+        'fill-transparent stroke-purple-400': !(isFavorite$ | async)
+      }"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+      />
+    </svg>
+  </div>
+
+  <div
+    class="absolute bottom-0 left-0 right-0 h-1/7 sm:h-1/5 md:h-2/11 bg-gradient-to-t from-purple-900/90 via-purple-800/60 to-transparent backdrop-blur-md"
+  ></div>
+
+  <div
+    class="absolute bottom-0 left-0 right-0 px-6 py-4 text-white z-20 select-none"
+  >
+    <h2
+      class="text-xl font-extrabold uppercase tracking-wide truncate drop-shadow-lg"
+      title="{{ header }}"
+    >
+      {{ header }}
+    </h2>
+    <p
+      class="text-sm text-purple-300 truncate drop-shadow-md"
+      title="{{ subTitle }}"
+    >
+      {{ subTitle }}
+    </p>
+  </div>
+</div>

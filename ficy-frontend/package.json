@@ -1,0 +1,49 @@
+{
+  "name": "ficy",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^19.2.14",
+    "@angular/common": "^19.2.0",
+    "@angular/compiler": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/forms": "^19.2.0",
+    "@angular/platform-browser": "^19.2.0",
+    "@angular/platform-browser-dynamic": "^19.2.0",
+    "@angular/router": "^19.2.0",
+    "@ngrx/effects": "^19.2.1",
+    "@ngrx/entity": "^19.2.1",
+    "@ngrx/store": "^19.2.1",
+    "@ngrx/store-devtools": "^19.2.1",
+    "@tailwindcss/postcss": "^4.1.8",
+    "jwt-decode": "^4.0.0",
+    "ngrx-store-localstorage": "^19.0.0",
+    "ngx-toastr": "^19.0.0",
+    "postcss": "^8.5.4",
+    "rxjs": "~7.8.0",
+    "tailwindcss": "^4.1.8",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.2.11",
+    "@angular/cli": "^19.2.11",
+    "@angular/compiler-cli": "^19.2.0",
+    "@testing-library/angular": "^17.4.0",
+    "@types/jest": "^29.5.14",
+    "jest": "^29.7.0",
+    "jest-marbles": "^3.1.1",
+    "jest-preset-angular": "^14.6.0",
+    "ts-jest": "^29.3.4",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.7.2"
+  }
+}

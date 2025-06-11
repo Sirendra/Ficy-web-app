@@ -1,0 +1,80 @@
+
+.DS_Store
+Thumbs.db
+# ========== ficy-frontend ignore rules ==========
+
+# Compiled output
+/ficy-frontend/dist
+/ficy-frontend/tmp
+/ficy-frontend/out-tsc
+/ficy-frontend/bazel-out
+
+# Node
+/ficy-frontend/node_modules
+/ficy-frontend/npm-debug.log
+/ficy-frontend/yarn-error.log
+
+# IDEs and editors
+/ficy-frontend/.idea/
+/ficy-frontend/.project
+/ficy-frontend/.classpath
+/ficy-frontend/.c9/
+/ficy-frontend/*.launch
+/ficy-frontend/.settings/
+/ficy-frontend/*.sublime-workspace
+
+# Visual Studio Code
+/ficy-frontend/.vscode/*
+!/ficy-frontend/.vscode/settings.json
+!/ficy-frontend/.vscode/tasks.json
+!/ficy-frontend/.vscode/launch.json
+!/ficy-frontend/.vscode/extensions.json
+/ficy-frontend/.history/*
+
+# Miscellaneous
+/ficy-frontend/.angular/cache
+/ficy-frontend/.sass-cache/
+/ficy-frontend/connect.lock
+/ficy-frontend/coverage
+/ficy-frontend/libpeerconnection.log
+/ficy-frontend/testem.log
+/ficy-frontend/typings
+
+# System files
+/ficy-frontend/.DS_Store
+/ficy-frontend/Thumbs.db
+
+
+# ========== ficy-backend ignore rules ==========
+
+# Build and coverage
+/ficy-backend/coverage
+/ficy-backend/dist
+
+# Node modules
+/ficy-backend/node_modules
+
+# Logs
+/ficy-backend/npm-debug.log*
+/ficy-backend/yarn-debug.log*
+/ficy-backend/yarn-error.log*
+/ficy-backend/pnpm-debug.log*
+
+# Runtime files
+/ficy-backend/.env.local
+/ficy-backend/.env.development
+/ficy-backend/.env.test
+/ficy-backend/.env.production
+/ficy-backend/.cache
+
+# TypeScript
+/ficy-backend/*.tsbuildinfo
+
+# IDEs and editors
+/ficy-backend/.idea/
+/ficy-backend/.vscode/
+/ficy-backend/.history/
+
+# OS metadata
+/ficy-backend/.DS_Store
+/ficy-backend/Thumbs.db

@@ -1,0 +1,55 @@
+<div class="flex justify-center mt-4">
+  <nav class="inline-flex items-center space-x-1 text-sm">
+    <span
+      (click)="goToPage(1)"
+      class="cursor-pointer px-2 py-1 rounded hover:bg-purple-100 hover:text-purple-500 text-white font-medium"
+      [class.opacity-40]="currentPage === 1"
+    >
+      First
+    </span>
+
+    <span
+      (click)="goToPage(currentPage - 1)"
+      class="cursor-pointer px-2 py-1 rounded hover:bg-purple-100 hover:text-purple-500 text-white font-medium"
+      [class.opacity-40]="currentPage === 1"
+    >
+      Prev
+    </span>
+
+    <ng-container *ngIf="totalPages <= 5; else condensed">
+      <span
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        (click)="goToPage(i + 1)"
+        class="px-2 py-1 rounded cursor-pointer font-medium"
+        [ngClass]="{
+          'bg-purple-400 text-white': currentPage === i + 1,
+          'hover:bg-purple-100 text-purple-400': currentPage !== i + 1
+        }"
+      >
+        {{ i + 1 }}
+      </span>
+    </ng-container>
+
+    <ng-template #condensed>
+      <span class="px-2 py-1 text-purple-400 font-semibold">
+        Page {{ currentPage }} of {{ totalPages }}
+      </span>
+    </ng-template>
+
+    <span
+      (click)="goToPage(currentPage + 1)"
+      class="cursor-pointer px-2 py-1 rounded hover:bg-purple-100 hover:text-purple-500 text-white font-medium"
+      [class.opacity-40]="currentPage === totalPages"
+    >
+      Next
+    </span>
+
+    <span
+      (click)="goToPage(totalPages)"
+      class="cursor-pointer px-2 py-1 rounded hover:bg-purple-100 hover:text-purple-500 text-white font-medium"
+      [class.opacity-40]="currentPage === totalPages"
+    >
+      Last
+    </span>
+  </nav>
+</div>

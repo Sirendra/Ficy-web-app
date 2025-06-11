@@ -1,0 +1,58 @@
+<app-common-picture
+  [title]="title"
+  [description]="description"
+  [exploreSectionTitle]="exploreTitle"
+  [exploreSectionDescription]="exploreDesc"
+  [backgroundUrl]="'/book.jpeg'"
+></app-common-picture>
+
+<div
+  class="p-6 bg-gradient-to-b from-gray-900 via-gray-950 to-black min-h-screen rounded-t-3xl shadow-inner shadow-purple-700/10"
+>
+  <div
+    class="w-full border border-purple-500/20 bg-gray-800 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 px-6 py-4 mb-10 shadow-lg shadow-purple-500/20"
+  >
+    <h2
+      class="text-2xl font-bold text-purple-400 tracking-wide uppercase text-center md:text-left"
+    >
+      Books
+    </h2>
+
+    <div class="flex items-center gap-4">
+      <div
+        *ngIf="(loading$ | async) || isLoading"
+        class="text-white animate-pulse"
+      >
+        Loading...
+      </div>
+      <div *ngIf="error$ | async as error" class="text-red-400 font-medium">
+        Error: {{ error }}
+      </div>
+      <app-common-search (searchChanged)="onSearchChanged($event)">
+      </app-common-search>
+    </div>
+  </div>
+
+  <div
+    *ngIf="books$ | async as books"
+    class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
+    <app-common-card
+      *ngFor="let book of books; let i = index; trackBy: trackByUrl"
+      [backgroundUrl]="`/book${i % 4}.jpeg`"
+      [header]="book.name"
+      [subTitle]="book.authors.join(', ')"
+      [dataType]="'book'"
+      [url]="book.url"
+      class="hover:scale-[1.02] transition-transform"
+    ></app-common-card>
+  </div>
+
+  <div class="flex justify-center mt-12">
+    <app-common-pagination
+      [totalPages]="1"
+      [currentPage]="page"
+      (pageChange)="handlePageChangeEvent($event)"
+    ></app-common-pagination>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<app-common-picture
+  [backgroundUrl]="'/houses.jpeg'"
+  [title]="title"
+  [description]="description"
+  [exploreSectionTitle]="exploreTitle"
+  [exploreSectionDescription]="exploreDesc"
+></app-common-picture>
+
+<div
+  class="p-6 bg-gradient-to-b from-gray-900 via-gray-950 to-black min-h-screen rounded-t-3xl shadow-inner shadow-purple-700/10"
+>
+  <div
+    class="w-full border border-purple-500/20 bg-gray-800 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 px-6 py-4 mb-10 shadow-lg shadow-purple-500/20"
+  >
+    <h2
+      class="text-2xl font-bold text-purple-400 tracking-wide uppercase text-center md:text-left"
+    >
+      Houses
+    </h2>
+
+    <app-common-search (searchChanged)="onSearchChanged($event)">
+    </app-common-search>
+  </div>
+
+  <div
+    *ngIf="house$ | async as houses"
+    class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
+    <app-common-card
+      *ngFor="let house of houses; let i = index; trackBy: trackByUrl"
+      [backgroundUrl]="`/house${i % 4}.jpeg`"
+      [header]="house.name"
+      [subTitle]="house.region || house.coatOfArms"
+      [dataType]="'house'"
+      [url]="house.url"
+      class="hover:scale-[1.02] transition-transform"
+    ></app-common-card>
+  </div>
+
+  <div class="flex justify-center mt-12">
+    <app-common-pagination
+      [totalPages]="totalPage"
+      [currentPage]="page"
+      (pageChange)="handlePageChangeEvent($event)"
+    ></app-common-pagination>
+  </div>
+</div>

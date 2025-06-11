@@ -1,0 +1,59 @@
+<app-common-picture
+  [title]="title"
+  [description]="subTitle"
+  [backgroundUrl]="'/b1.jpeg'"
+  [showExplore]="false"
+></app-common-picture>
+
+<div
+  *ngIf="book"
+  class="grid grid-cols-1 md:grid-cols-2 gap-6 px-6 py-10 bg-gradient-to-br from-gray-900 via-gray-950 to-black"
+>
+  <app-book-card-detail
+    *ngFor="let entry of bookEntries; let i = index"
+    [property]="entry.key"
+    [value]="entry.value"
+    [index]="i"
+    class="bg-gray-800/70 rounded-xl p-4 shadow-lg shadow-purple-600/20"
+  ></app-book-card-detail>
+</div>
+
+<div
+  class="p-6 bg-gradient-to-b from-gray-900 via-gray-950 to-black min-h-screen bg-gray-900 rounded-t-3xl shadow-inner shadow-purple-700/10"
+>
+  <div
+    class="w-full border border-purple-500/20 bg-gray-800 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 px-6 py-4 mb-10 shadow-lg shadow-purple-500/20"
+  >
+    <h2
+      class="text-2xl font-bold text-purple-400 tracking-wide uppercase text-center md:text-left"
+    >
+      Characters
+    </h2>
+
+    <app-common-search (searchChanged)="onSearchChanged($event)">
+    </app-common-search>
+  </div>
+
+  <div
+    *ngIf="characters$ | async as characters"
+    class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
+    <app-common-card
+      *ngFor="let character of characters; let i = index; trackBy: trackByUrl"
+      [backgroundUrl]="`/character${i % 4}.jpeg`"
+      [header]="character.name || character.aliases[0]"
+      [subTitle]="character.gender"
+      [dataType]="'character'"
+      [url]="character.url"
+      class="hover:scale-[1.02] transition-transform"
+    ></app-common-card>
+  </div>
+
+  <div class="flex justify-center mt-12">
+    <app-common-pagination
+      [totalPages]="totalPage"
+      [currentPage]="page"
+      (pageChange)="handlePageChangeEvent($event)"
+    ></app-common-pagination>
+  </div>
+</div>
